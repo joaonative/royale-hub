@@ -1,1 +1,20 @@
-<main>Hello World!</main>
+<header class="flex flex-row items-center justify-between p-6 text-dark/60">
+  <nav>
+    <a class="text-2xl text-dark" routerLink="/home">Royale Hub</a>
+  </nav>
+  <nav class="space-x-4">
+    <a routerLink="/cards" routerLinkActive="text-[#161616]">Cards</a>
+    <a routerLink="/clans" routerLinkActive="text-[#161616]">Clans</a>
+  </nav>
+
+  <nav class="space-x-4">
+    <a routerLink="/leaderboards" routerLinkActive="text-[#161616]">
+      Leaderboards
+    </a>
+    <a routerLink="/players" routerLinkActive="text-[#161616]">Players</a>
+  </nav>
+</header>
+
+<main class="px-6 mt-6 text-dark">
+  <router-outlet></router-outlet>
+</main>
