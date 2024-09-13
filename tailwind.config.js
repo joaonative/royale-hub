@@ -9,6 +9,11 @@ module.exports = {
         greenDark: "#327427",
         blue: "#1914BF",
         blueDark: "#131079",
+        purple: "#5A57C1",
+        purpleDark: "#36346C",
+      },
+      backgroundImage: {
+        elixir: "url('assets/imgs/elixir.png')",
       },
     },
   },
