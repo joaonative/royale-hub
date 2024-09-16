@@ -21,6 +21,21 @@ button:active {
   @apply scale-110 duration-150;
 }
 
+section {
+  @apply flex flex-col gap-6;
+}
+
+section h1 {
+  @apply text-xl;
+}
+
+span {
+  @apply flex items-center gap-1;
+}
+
+.icon {
+  @apply stroke-blue stroke-[3px];
+}
 .green {
   @apply border-greenDark bg-green;
 }
