@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CardsResponse } from '../models/clash-royale.interfaces';
+import { CardsResponse, ClanResponse } from '../models/clash-royale.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,11 @@ import { CardsResponse } from '../models/clash-royale.interfaces';
 export class ClashRoyaleService {
   constructor(private http: HttpClient) {}
 
-  getCards(): Observable<any> {
-    return this.http.get<any>(`/cards`);
+  getCards(): Observable<CardsResponse> {
+    return this.http.get<CardsResponse>(`/cards`);
+  }
+
+  getFeaturedClans(): Observable<ClanResponse> {
+    return this.http.get<ClanResponse>(`/clans/featured`);
   }
 }
