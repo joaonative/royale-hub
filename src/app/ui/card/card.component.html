@@ -1,0 +1,15 @@
+<div
+  class="flex flex-col justify-between items-start w-[176px] h-[192px] bg-cover bg-center bg-no-repeat hover:scale-110 transition-transform duration-200"
+  [style.backgroundImage]="'url(' + card.iconUrls.medium + ')'"
+>
+  <span
+    class="w-[45px] h-[52px] bg-elixir bg-cover bg-center flex justify-center items-center text-white text-xl"
+    >{{ card.elixirCost }}</span
+  >
+  <h2
+    class="text-center text-white w-full"
+    [style.background]="getRarityColor(card.rarity)"
+  >
+    {{ card.name }}
+  </h2>
+</div>

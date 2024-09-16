@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ClashRoyaleService } from '../services/clash-royale.service';
 import { Card } from '../models/clash-royale.interfaces';
+import { CardComponent } from '../ui/card/card.component';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './cards.component.html',
 })
 export class CardsComponent implements OnInit {
@@ -38,20 +39,5 @@ export class CardsComponent implements OnInit {
       const bIndex = rarityOrder.indexOf(b.rarity);
       return this.sortOrder === 'desc' ? bIndex - aIndex : aIndex - bIndex;
     });
-  }
-
-  getRarityColor(rarity: string): string {
-    switch (rarity) {
-      case 'common':
-        return '#3D7FFF';
-      case 'rare':
-        return '#ED7219';
-      case 'epic':
-        return '#9D12F3';
-      case 'legendary':
-        return '#0cc2cd';
-      default:
-        return 'black';
-    }
   }
 }
