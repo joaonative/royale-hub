@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
   CardsResponse,
+  ClanDetails,
   ClanResponse,
   FeaturedClansResponse,
 } from '../models/clash-royale.interfaces';
@@ -19,5 +20,9 @@ export class ClashRoyaleService {
 
   getFeaturedClans(): Observable<FeaturedClansResponse> {
     return this.http.get<FeaturedClansResponse>(`/clans/featured`);
+  }
+
+  getClanByTag(clanTag: string): Observable<ClanDetails> {
+    return this.http.get<ClanDetails>(`/clans/${encodeURIComponent(clanTag)}`);
   }
 }

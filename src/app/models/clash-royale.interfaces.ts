@@ -32,6 +32,27 @@ export interface Clan {
   members: number;
 }
 
+export interface ClanDetails extends Clan {
+  description: string;
+  memberList: {
+    tag: string;
+    name: string;
+    role: string;
+    lastSeen: string;
+    expLevel: number;
+    trophies: number;
+    arena: {
+      id: number;
+      name: string;
+    };
+    clanRank: number;
+    previousClanRank: number;
+    donations: number;
+    donationsRecived: number;
+    clanChestPoints: number;
+  }[];
+}
+
 export interface Response<T> {
   items: T[];
 }
