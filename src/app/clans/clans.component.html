@@ -1,5 +1,9 @@
 <section>
   <div><h1>Featured Clans</h1></div>
+
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
   <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4"
   >
@@ -7,4 +11,5 @@
     <app-clan-card [clan]="clan"></app-clan-card>
     }
   </div>
+  }
 </section>
