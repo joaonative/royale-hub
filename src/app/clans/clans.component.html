@@ -1,13 +1,62 @@
 <section>
-  <div><h1>Featured Clans</h1></div>
-
+  <div><h1>Top 3 International Clans</h1></div>
   @if (loading) {
   <app-loading></app-loading>
   } @else {
-  <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4"
-  >
-    @for (clan of featuredClans; track clan.tag) {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (clan of featuredClans.international; track clan.tag) {
+    <app-clan-card [clan]="clan"></app-clan-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h1>Top 3 Europe Clans</h1></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (clan of featuredClans.europe; track clan.tag) {
+    <app-clan-card [clan]="clan"></app-clan-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h1>Top 3 North America Clans</h1></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (clan of featuredClans.northAmerica; track clan.tag) {
+    <app-clan-card [clan]="clan"></app-clan-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h1>Top 3 South America Clans</h1></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (clan of featuredClans.southAmerica; track clan.tag) {
+    <app-clan-card [clan]="clan"></app-clan-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h1>Top 3 Asia Clans</h1></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (clan of featuredClans.asia; track clan.tag) {
     <app-clan-card [clan]="clan"></app-clan-card>
     }
   </div>

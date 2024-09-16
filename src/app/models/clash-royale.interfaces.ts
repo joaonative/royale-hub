@@ -39,3 +39,12 @@ export interface Response<T> {
 export type CardsResponse = Response<Card>;
 
 export type ClanResponse = Response<Clan>;
+
+export interface FeaturedClansResponse {
+  northAmerica: ClanResponse;
+  southAmerica: ClanResponse;
+  asia: ClanResponse;
+  oceania: ClanResponse;
+  europe: ClanResponse;
+  international: ClanResponse;
+}
