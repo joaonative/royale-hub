@@ -16,15 +16,13 @@ export class CardsComponent implements OnInit {
   sortOrder: 'asc' | 'desc' = 'desc';
 
   ngOnInit(): void {
-    this.clashRoyaleService.getCards().subscribe(
-      (response) => {
-        this.cards = response.items;
+    this.clashRoyaleService.getCards().subscribe({
+      next: (res) => {
+        this.cards = res.items;
         this.sortCards();
       },
-      (error) => {
-        console.error('Cards Method Error: ', error);
-      }
-    );
+      error: (err) => console.error('Get Cards Error: ', err),
+    });
   }
 
   toggleSortOrder(): void {
