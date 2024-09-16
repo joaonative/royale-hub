@@ -6,7 +6,6 @@ import { Card } from '../../models/clash-royale.interfaces';
   standalone: true,
   imports: [],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css',
 })
 export class CardComponent {
   @Input() card!: Card;
