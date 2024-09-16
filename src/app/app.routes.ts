@@ -3,12 +3,18 @@ import { HomeComponent } from './home/home.component';
 import { CardsComponent } from './cards/cards.component';
 import { ClansComponent } from './clans/clans.component';
 import { ClanDetailsComponent } from './clan-details/clan-details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Royale Hub | Home',
+  },
+  {
+    path: '404',
+    component: NotFoundComponent,
+    title: 'Royale Hub | Not Found',
   },
   {
     path: 'cards',
@@ -21,7 +27,7 @@ export const routes: Routes = [
     title: 'Royale Hub | Clans',
   },
   {
-    path: 'clans/:tag',
+    path: 'clans/:clanTag',
     component: ClanDetailsComponent,
     title: 'Royale Hub | Clan Details',
   },
