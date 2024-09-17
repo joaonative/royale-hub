@@ -14,7 +14,7 @@
 }
 
 body {
-  @apply overflow-x-hidden;
+  @apply overflow-x-clip;
 }
 
 button {
@@ -35,6 +35,14 @@ section h1 {
 
 span {
   @apply flex items-center gap-1;
+}
+
+select {
+  @apply p-2 border-4 border-b-8 rounded-xl appearance-none bg-down bg-no-repeat bg-[right_center] bg-[length:32px_32px] border-dark/75;
+}
+
+label {
+  @apply flex flex-col gap-1 text-sm items-start;
 }
 
 .icon {

@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './clan-card.component.html',
 })
 export class ClanCardComponent {
+  constructor() {}
+
   readonly UsersIcon = UsersIcon;
   readonly MapPinIcon = MapPinIcon;
   readonly CircleAlertIcon = CircleAlertIcon;
