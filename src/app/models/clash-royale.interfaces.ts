@@ -55,6 +55,15 @@ export interface Location {
   isCountry: boolean;
 }
 
+export interface SearchClan {
+  term: string;
+  location: number;
+  minMembers: number;
+  maxMembers: number;
+  minScore: number;
+  maxScore: number;
+}
+
 export interface Response<T> {
   items: T[];
 }

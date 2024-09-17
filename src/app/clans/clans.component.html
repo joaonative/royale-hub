@@ -1,4 +1,127 @@
 <section>
+  <form
+    (ngSubmit)="onSubmit()"
+    #searchForm="ngForm"
+    name="searchForm"
+    id="searchForm"
+    class="flex flex-col items-center gap-4"
+  >
+    <div class="w-full flex flex-col lg:flex-row items-center gap-4">
+      <label class="w-full" for="term">
+        Clan Name or Tag
+        <div class="flex items-center gap-1 w-full">
+          <input
+            autocomplete="off"
+            [(ngModel)]="formValues.term"
+            class="card !p-2 w-full"
+            type="text"
+            name="term"
+            id="term"
+          />
+          <button type="submit" class="purple w-max">
+            <i-lucide
+              [img]="SearchIcon"
+              name="search"
+              class="icon !stroke-white"
+            ></i-lucide>
+          </button>
+          <button
+            type="button"
+            [disabled]="resultClans.length < 1"
+            (click)="clearResults()"
+            class="red w-max"
+          >
+            <i-lucide
+              [img]="Trash2Icon"
+              name="clear"
+              class="icon !stroke-white"
+            ></i-lucide>
+          </button>
+        </div>
+      </label>
+
+      <label class="w-full" for="location">
+        Clan Location
+        <select
+          [(ngModel)]="formValues.location"
+          class="w-full"
+          name="location"
+          id="location"
+        >
+          <option selected value="">Select Location</option>
+          @for (location of locations; track location.id) {
+          <option value="{{ location.id }}">
+            {{ location.name }}
+          </option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <label class="w-full" for="minMembers">
+        Min Members
+        <input
+          [(ngModel)]="formValues.minMembers"
+          class="card !p-2 w-full"
+          type="number"
+          min="2"
+          max="50"
+          id="minMembers"
+          name="minMembers"
+        />
+      </label>
+      <label class="w-full" for="maxMembers">
+        Max Members
+        <input
+          [(ngModel)]="formValues.maxMembers"
+          class="card !p-2 w-full"
+          type="number"
+          min="1"
+          max="50"
+          id="maxMembers"
+          name="maxMembers"
+        />
+      </label>
+
+      <label class="w-full" for="minScore">
+        Min Score
+        <input
+          [(ngModel)]="formValues.minScore"
+          class="card !p-2 w-full"
+          type="number"
+          min="1"
+          max="90000"
+          id="minScore"
+          name="minScore"
+        />
+      </label>
+      <label class="w-full" for="maxScore">
+        Max Score
+        <input
+          [(ngModel)]="formValues.maxScore"
+          class="card !p-2 w-full"
+          type="number"
+          min="0"
+          max="90000"
+          id="maxScore"
+          name="maxScore"
+        />
+      </label>
+    </div>
+  </form>
+  @if (loadingSearch) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (clan of resultClans; track clan.tag) {
+    <app-clan-card [clan]="clan"></app-clan-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
   <div><h1>Top 3 International Clans</h1></div>
   @if (loading) {
   <app-loading></app-loading>
