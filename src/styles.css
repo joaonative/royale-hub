@@ -18,7 +18,7 @@ body {
 }
 
 button {
-  @apply border-4 border-b-8 rounded-xl p-2 hover:scale-110 transition-transform duration-75 text-white text-stroke;
+  @apply disabled:bg-dark/25 disabled:border-dark/75 disabled:scale-100 disabled:pointer-events-none border-4 border-b-8 rounded-xl p-2 hover:scale-110 transition-transform duration-75 text-white text-stroke;
 }
 
 button:active {
@@ -58,6 +58,10 @@ label {
 
 .purple {
   @apply border-purpleDark bg-purple;
+}
+
+.red {
+  @apply border-darkRed bg-red;
 }
 
 .text-stroke {
