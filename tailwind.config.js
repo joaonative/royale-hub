@@ -14,6 +14,7 @@ module.exports = {
       },
       backgroundImage: {
         elixir: "url('assets/imgs/elixir.png')",
+        exp: "url('assets/imgs/exp.png')",
       },
     },
   },
