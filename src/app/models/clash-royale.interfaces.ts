@@ -20,11 +20,7 @@ export interface Clan {
   badgeId: number;
   clanScore: number;
   clanWarTrophies: number;
-  location: {
-    id: number;
-    name: string;
-    isCountry: boolean;
-  };
+  location: Location;
   requiredTrophies: number;
   donationsPerWeek: number;
   clanChestLevel: number;
@@ -53,9 +49,17 @@ export interface ClanDetails extends Clan {
   }[];
 }
 
+export interface Location {
+  id: number;
+  name: string;
+  isCountry: boolean;
+}
+
 export interface Response<T> {
   items: T[];
 }
+
+export type LocationResponse = Response<Location>;
 
 export type CardsResponse = Response<Card>;
 

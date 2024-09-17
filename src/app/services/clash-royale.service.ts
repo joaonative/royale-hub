@@ -6,6 +6,7 @@ import {
   ClanDetails,
   ClanResponse,
   FeaturedClansResponse,
+  LocationResponse,
 } from '../models/clash-royale.interfaces';
 
 @Injectable({
@@ -24,5 +25,9 @@ export class ClashRoyaleService {
 
   getClanByTag(clanTag: string): Observable<ClanDetails> {
     return this.http.get<ClanDetails>(`/clans/${encodeURIComponent(clanTag)}`);
+  }
+
+  getLocations(): Observable<LocationResponse> {
+    return this.http.get<LocationResponse>(`/locations`);
   }
 }
