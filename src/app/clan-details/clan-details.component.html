@@ -62,8 +62,10 @@
         <tr>
           <th scope="col" class="px-4 py-3">Rank</th>
           <th scope="col" class="px-4 py-3">Level</th>
+          <th scope="col" class="px-4 py-3">Tag</th>
           <th scope="col" class="px-4 py-3">Name</th>
           <th scope="col" class="px-4 py-3">Role</th>
+          <th scope="col" class="px-4 py-3">Trophies</th>
           <th scope="col" class="px-4 py-3">Donations</th>
         </tr>
       </thead>
@@ -76,8 +78,10 @@
           >
             {{ member.expLevel }}
           </td>
+          <td class="p-4">{{ member.tag }}</td>
           <td class="p-4">{{ member.name }}</td>
           <td class="p-4">{{ member.role }}</td>
+          <td class="p-4">{{ member.trophies }}</td>
           <td class="p-4">{{ member.donations }}</td>
         </tr>
         }
