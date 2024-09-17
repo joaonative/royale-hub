@@ -1,7 +1,89 @@
-<section>
-  @if (loading) {
-  <app-loading></app-loading>
-  } @else {
-  {{ clan?.name }}
-  }
+@if (loading) {
+<app-loading></app-loading>
+} @else {
+<section class="overflow-x-clip">
+  <div
+    class="card flex flex-row lg:w-max lg:!p-4 items-center justify-between lg:gap-4"
+  >
+    <img
+      src="https://royaleapi.github.io/cr-api-assets/badges/{{ badgeName }}.png"
+      alt="{{ badgeName }} badge icon"
+      class="w-12 h-12 lg:h-32 lg:w-32 object-contain"
+    />
+    <div class="space-y-2 text-center">
+      <h1>{{ clan?.name }}</h1>
+      <h2>{{ clan?.tag }}</h2>
+    </div>
+    <img
+      src="https://royaleapi.github.io/cr-api-assets/badges/{{ badgeName }}.png"
+      alt="{{ badgeName }} badge icon"
+      class="lg:hidden w-12 h-12 lg:h-32 lg:w-32 object-contain"
+    />
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <span class="card flex justify-center">
+      <i-lucide [img]="TrophyIcon" name="score" class="icon"></i-lucide>
+      {{ clan?.clanScore }}
+    </span>
+    <span class="card flex justify-center">
+      <i-lucide [img]="HandCoinsIcon" name="donations" class="icon"></i-lucide>
+      {{ clan?.donationsPerWeek }}
+    </span>
+    <span class="card flex justify-center capitalize">
+      <i-lucide [img]="Infoicon" name="clan-type" class="icon"></i-lucide>
+      {{ clan?.type }}
+    </span>
+    <span class="card flex justify-center">
+      <i-lucide [img]="MapPinIcon" name="location" class="icon"></i-lucide>
+      <abbr title="{{ clan?.location?.name }}">{{
+        clan?.location?.name?.slice(0, 3)
+      }}</abbr>
+    </span>
+  </div>
+  <div class="card flex flex-row justify-center">
+    <p class="leading-relaxed">
+      @if (clan?.description) {
+      {{ clan?.description }}
+      } @else { No clan description }
+    </p>
+  </div>
 </section>
+<section>
+  <div class="flex flex-col gap-4 sm:flex-row items-center lg:justify-between">
+    <h3 class="text-lg">Clan Members: {{ clan?.members }}/50</h3>
+    <button class="purple" (click)="toggleSortOrder()">
+      {{ sortOrder === "desc" ? "Rank Descending " : "Rank Ascending " }}
+    </button>
+  </div>
+  <div class="relative overflow-x-auto">
+    <table class="card text-left rtl:text-right overflow-x-scroll w-full">
+      <thead class="text-xs uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-4 py-3">Rank</th>
+          <th scope="col" class="px-4 py-3">Level</th>
+          <th scope="col" class="px-4 py-3">Name</th>
+          <th scope="col" class="px-4 py-3">Role</th>
+          <th scope="col" class="px-4 py-3">Donations</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (member of clan?.memberList; track member.tag) {
+        <tr class="bg-white border-dark/25 border-b-4">
+          <th scope="row" class="p-4">{{ member.clanRank }}</th>
+          <td
+            class="p-[15px] text-white text-stroke bg-left bg-exp bg-contain bg-no-repeat"
+          >
+            {{ member.expLevel }}
+          </td>
+          <td class="p-4">{{ member.name }}</td>
+          <td class="p-4">{{ member.role }}</td>
+          <td class="p-4">{{ member.donations }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+}
