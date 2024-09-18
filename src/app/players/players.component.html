@@ -1,0 +1,115 @@
+<section>
+  <div><h1>Browse Players</h1></div>
+  <form
+    (ngSubmit)="onSubmit()"
+    #searchForm="ngForm"
+    name="searchForm"
+    id="searchForm"
+    class="flex flex-col items-center gap-4"
+  >
+    <div class="w-full flex flex-col lg:flex-row items-center gap-4">
+      <label class="w-full" for="term">
+        Player Tag
+        <div class="flex items-center gap-1 w-full">
+          <input
+            autocomplete="off"
+            [(ngModel)]="formValues.tag"
+            class="card !p-2 w-full"
+            type="text"
+            name="term"
+            id="term"
+          />
+          <button type="submit" class="purple w-max">
+            <i-lucide
+              [img]="SearchIcon"
+              name="search"
+              class="icon !stroke-white"
+            ></i-lucide>
+          </button>
+          <button
+            type="button"
+            [disabled]="resultPlayer.length < 1"
+            (click)="clearResults()"
+            class="red w-max"
+          >
+            <i-lucide
+              [img]="Trash2Icon"
+              name="clear"
+              class="icon !stroke-white"
+            ></i-lucide>
+          </button>
+        </div>
+      </label>
+    </div>
+  </form>
+  @if (loadingSearch) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+  }
+</section>
+
+<section>
+  <div><h2>Top 3 United State Players</h2></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (player of featuredPlayers.unitedStates; track player.tag) {
+    <app-player-card [player]="player"></app-player-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h2>Top 3 Brazil Players</h2></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (player of featuredPlayers.brazil; track player.tag) {
+    <app-player-card [player]="player"></app-player-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h2>Top 3 China Players</h2></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (player of featuredPlayers.china; track player.tag) {
+    <app-player-card [player]="player"></app-player-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h2>Top 3 Germany Players</h2></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (player of featuredPlayers.germany; track player.tag) {
+    <app-player-card [player]="player"></app-player-card>
+    }
+  </div>
+  }
+</section>
+
+<section>
+  <div><h2>Top 3 Japan Players</h2></div>
+  @if (loading) {
+  <app-loading></app-loading>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    @for (player of featuredPlayers.japan; track player.tag) {
+    <app-player-card [player]="player"></app-player-card>
+    }
+  </div>
+  }
+</section>
