@@ -1,27 +1,69 @@
-<section
-  class="flex flex-col gap-12 lg:flex-row lg:items-center justify-between"
->
-  <div class="flex flex-col items-center lg:items-start gap-4">
-    <h1 class="text-xl lg:text-2xl 2xl:text-3xl">
-      The Ultimate Clash Royale Hub
-    </h1>
-    <p class="max-w-prose leading-relaxed">
-      Get detailed information on any clan or player, and stay ahead of the
-      competition with up-to-date stats. Elevate your game to the next level.
-    </p>
+<div class="flex flex-col gap-2">
+  <section
+    class="flex flex-col gap-12 lg:flex-row lg:items-center justify-between"
+  >
+    <div class="flex flex-col items-center lg:items-start gap-8">
+      <h1 class="text-xl lg:text-2xl 2xl:text-3xl">
+        The Ultimate Clash Royale Hub
+      </h1>
+      <p class="max-w-prose leading-relaxed">
+        Get detailed information on any clan or player, and stay ahead of the
+        competition with up-to-date stats. Elevate your game to the next level.
+      </p>
 
-    <div class="space-x-4">
+      <div class="space-x-2">
+        <a href="/cards">
+          <button class="green">Explore Now</button>
+        </a>
+        <a
+          href="https://github.com/joaonative/royale-hub"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <button class="blue">View Github</button>
+        </a>
+      </div>
+    </div>
+    <img src="assets/imgs/hero.png" alt="Clash Royale Legendary Arena" />
+  </section>
+  <section
+    class="flex flex-col-reverse gap-4 xl:gap-12 justify-center lg:flex-row items-center"
+  >
+    <img
+      src="assets/imgs/cards.png"
+      alt=""
+      class="w-full xl:w-[768px] h-64 xl:h-[512px] object-cover lg:object-contain"
+    />
+    <div class="flex flex-col items-center lg:items-start gap-4">
+      <h1 class="text-xl lg:text-2xl 2xl:text-3xl">Cards Section</h1>
+      <p class="max-w-prose leading-relaxed">
+        Discover a comprehensive collection of cards, where you can explore
+        detailed information and filter your search to find exactly what you
+        need. Master your strategy and build the perfect deck!
+      </p>
       <a href="/cards">
-        <button class="green">Explore Now</button>
-      </a>
-      <a
-        href="https://github.com/joaonative/royale-hub"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <button class="blue">View Github</button>
+        <button class="green">Explore Cards</button>
       </a>
     </div>
-  </div>
-  <img src="assets/imgs/hero.png" alt="" />
-</section>
+  </section>
+  <section
+    class="flex flex-col gap-4 xl:gap-12 justify-center lg:flex-row items-center"
+  >
+    <div class="flex flex-col items-center lg:items-start gap-8">
+      <h1 class="text-xl lg:text-2xl 2xl:text-3xl">Clans Section</h1>
+      <p class="max-w-prose leading-relaxed">
+        Explore the top clans from various regions, allowing you to search for
+        detailed clan information and filter your results. Access specific clans
+        to dive deeper into their stats and activities!
+      </p>
+      <a href="/cards">
+        <button class="green">Explore Clans</button>
+      </a>
+    </div>
+    <img
+      src="assets/imgs/clans.png"
+      alt=""
+      class="w-full xl:w-[768px] h-96 xl:h-[512px] object-contain"
+    />
+  </section>
+</div>
