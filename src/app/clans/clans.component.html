@@ -113,13 +113,15 @@
   </form>
   @if (loadingSearch) {
   <app-loading></app-loading>
+  } @else { @if(error) {
+  <p class="text-center text-red">{{ error }}</p>
   } @else {
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
     @for (clan of resultClans; track clan.tag) {
     <app-clan-card [clan]="clan"></app-clan-card>
     }
   </div>
-  }
+  } }
 </section>
 
 <section>

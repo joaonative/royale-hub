@@ -61,6 +61,8 @@ export class ClansComponent {
   loadingSearch: boolean = false;
   loading: boolean = false;
 
+  error: string = '';
+
   ngOnInit(): void {
     this.loading = true;
     this.clashRoyaleService.getFeaturedClans().subscribe({
@@ -84,12 +86,19 @@ export class ClansComponent {
     });
   }
   onSubmit() {
-    if (this.formValues.term.length < 3) {
+    this.error = '';
+    if (this.formValues.term.length >= 1 && this.formValues.term.length < 3) {
+      this.error = 'Name or tag should be at least 3 caracters long';
       return;
     }
     this.loadingSearch = true;
     this.clashRoyaleService.searchClan(this.formValues).subscribe({
-      next: (res) => (this.resultClans = res.items),
+      next: (res) => {
+        this.resultClans = res.items;
+        if (res.items.length === 0)
+          this.error =
+            'No clans found, please check back later or try a different search!';
+      },
       error: (err) => console.error('Search Clan Error: ', err),
       complete: () => (this.loadingSearch = false),
     });
