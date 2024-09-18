@@ -5,12 +5,13 @@
 @font-face {
   font-family: "Supercell-Magic";
   src: url("assets/fonts/You\ Blockhead.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
 }
 
 * {
   font-family: "Supercell-Magic";
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 1px;
 }
 
 body {
