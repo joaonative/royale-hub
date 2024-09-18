@@ -6,6 +6,7 @@ import {
   ClanDetails,
   ClanResponse,
   FeaturedClansResponse,
+  FeaturedPlayerResponse,
   LocationResponse,
   SearchClan,
 } from '../models/clash-royale.interfaces';
@@ -22,6 +23,10 @@ export class ClashRoyaleService {
 
   getFeaturedClans(): Observable<FeaturedClansResponse> {
     return this.http.get<FeaturedClansResponse>(`/clans/featured`);
+  }
+
+  getFeaturedPLayers(): Observable<FeaturedPlayerResponse> {
+    return this.http.get<FeaturedPlayerResponse>(`/players/featured`);
   }
 
   getClanByTag(clanTag: string): Observable<ClanDetails> {

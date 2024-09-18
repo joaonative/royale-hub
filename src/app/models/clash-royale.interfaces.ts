@@ -13,6 +13,19 @@ export interface Card {
   rarity: string;
 }
 
+export interface Player {
+  tag: string;
+  name: string;
+  expLevel: number;
+  eloRating: number;
+  rank: number;
+  clan?: {
+    tag: string;
+    name: string;
+    badgeId: number;
+  };
+}
+
 export interface Clan {
   tag: string;
   name: string;
@@ -64,6 +77,10 @@ export interface SearchClan {
   maxScore: number;
 }
 
+export interface SearchPlayer {
+  tag: string;
+}
+
 export interface Response<T> {
   items: T[];
 }
@@ -71,6 +88,8 @@ export interface Response<T> {
 export type LocationResponse = Response<Location>;
 
 export type CardsResponse = Response<Card>;
+
+export type PlayerResponse = Response<Player>;
 
 export type ClanResponse = Response<Clan>;
 
@@ -81,4 +100,12 @@ export interface FeaturedClansResponse {
   oceania: ClanResponse;
   europe: ClanResponse;
   international: ClanResponse;
+}
+
+export interface FeaturedPlayerResponse {
+  unitedStates: PlayerResponse;
+  brazil: PlayerResponse;
+  germany: PlayerResponse;
+  japan: PlayerResponse;
+  china: PlayerResponse;
 }
