@@ -28,7 +28,7 @@
           </button>
           <button
             type="button"
-            [disabled]="resultPlayer.length < 1"
+            [disabled]="resultPlayer.name === ''"
             (click)="clearResults()"
             class="red w-max"
           >
@@ -44,9 +44,13 @@
   </form>
   @if (loadingSearch) {
   <app-loading></app-loading>
-  } @else {
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-  }
+  } @else { @if(error) {
+  <p class="text-center text-red">{{ error }}</p>
+  } @else { @if(resultPlayer.name !== "") {
+  <div class="grid grid-cols-1">
+    <app-player-card [player]="resultPlayer"></app-player-card>
+  </div>
+  } } }
 </section>
 
 <section>

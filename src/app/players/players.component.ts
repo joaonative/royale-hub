@@ -36,7 +36,20 @@ export class PlayersComponent {
   loading: boolean = false;
   loadingSearch: boolean = false;
 
-  resultPlayer: [] = [];
+  resultPlayer: Player = {
+    name: '',
+    expLevel: 0,
+    rank: 0,
+    tag: '',
+    clan: {
+      badgeId: 0,
+      name: '',
+      tag: '',
+    },
+    eloRating: 0,
+  };
+
+  error: string = '';
 
   featuredPlayers: {
     unitedStates: Player[];
@@ -65,7 +78,6 @@ export class PlayersComponent {
           japan: res.japan.items,
           china: res.china.items,
         };
-        console.log(res.brazil.items);
       },
       error: (err) => console.log('Get FeaturedPlayers', err),
       complete: () => (this.loading = false),
@@ -73,7 +85,20 @@ export class PlayersComponent {
   }
 
   onSubmit() {
-    console.log(this.formValues);
+    this.error = '';
+    this.loadingSearch = true;
+    this.clashRoyaleService
+      .searchPlayer(this.formValues.tag.toUpperCase())
+      .subscribe({
+        next: (res) => (this.resultPlayer = res),
+        error: (err) => {
+          this.loadingSearch = false;
+          this.error =
+            'Player not found, please check back later or try a different search!';
+          console.log('Searching Player Error', err);
+        },
+        complete: () => (this.loadingSearch = false),
+      });
   }
 
   clearResults() {
@@ -81,6 +106,17 @@ export class PlayersComponent {
       tag: '',
     };
 
-    this.resultPlayer = [];
+    this.resultPlayer = {
+      name: '',
+      expLevel: 0,
+      rank: 0,
+      tag: '',
+      clan: {
+        badgeId: 0,
+        name: '',
+        tag: '',
+      },
+      eloRating: 0,
+    };
   }
 }
