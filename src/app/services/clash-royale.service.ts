@@ -8,7 +8,9 @@ import {
   FeaturedClansResponse,
   FeaturedPlayerResponse,
   LocationResponse,
+  Player,
   SearchClan,
+  SearchPlayer,
 } from '../models/clash-royale.interfaces';
 
 @Injectable({
@@ -44,6 +46,10 @@ export class ClashRoyaleService {
       limit: '9',
     });
     return this.http.get<ClanResponse>(`/clans/search`, { params });
+  }
+
+  searchPlayer(playerTag: string): Observable<Player> {
+    return this.http.get<Player>(`/players/${encodeURIComponent(playerTag)}`);
   }
 
   getLocations(): Observable<LocationResponse> {
