@@ -11,6 +11,7 @@ import {
   Player,
   SearchClan,
   SearchPlayer,
+  UpcomingChestsResponse,
 } from '../models/clash-royale.interfaces';
 
 @Injectable({
@@ -50,6 +51,12 @@ export class ClashRoyaleService {
 
   searchPlayer(playerTag: string): Observable<Player> {
     return this.http.get<Player>(`/players/${encodeURIComponent(playerTag)}`);
+  }
+
+  getUpcomingChests(playerTag: string): Observable<UpcomingChestsResponse> {
+    return this.http.get<UpcomingChestsResponse>(
+      `/players/chests/${encodeURIComponent(playerTag)}`
+    );
   }
 
   getLocations(): Observable<LocationResponse> {
