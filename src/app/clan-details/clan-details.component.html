@@ -2,23 +2,16 @@
 <app-loading></app-loading>
 } @else {
 <section class="overflow-x-clip">
-  <div
-    class="card flex flex-row lg:w-max lg:!p-4 items-center justify-between lg:gap-4"
-  >
+  <div class="flex flex-row lg:w-max lg:!p-4 items-center justify-center gap-4">
     <img
       src="https://royaleapi.github.io/cr-api-assets/badges/{{ badgeName }}.png"
       alt="{{ badgeName }} badge icon"
-      class="w-12 h-12 lg:h-32 lg:w-32 object-contain"
+      class="w-20 h-20 xl:h-32 xl:w-32 object-contain"
     />
-    <div class="space-y-2 text-center">
+    <div class="space-y-2 text-start">
       <h1>{{ clan?.name }}</h1>
       <h2>{{ clan?.tag }}</h2>
     </div>
-    <img
-      src="https://royaleapi.github.io/cr-api-assets/badges/{{ badgeName }}.png"
-      alt="{{ badgeName }} badge icon"
-      class="lg:hidden w-12 h-12 lg:h-32 lg:w-32 object-contain"
-    />
   </div>
 
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
