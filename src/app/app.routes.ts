@@ -5,6 +5,7 @@ import { ClansComponent } from './clans/clans.component';
 import { ClanDetailsComponent } from './clan-details/clan-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlayersComponent } from './players/players.component';
+import { PlayerDetailsComponent } from './player-details/player-details.component';
 
 export const routes: Routes = [
   {
@@ -39,7 +40,7 @@ export const routes: Routes = [
   },
   {
     path: 'players/:playerTag',
-    component: PlayersComponent,
+    component: PlayerDetailsComponent,
     title: 'Royale Hub | Player Details',
   },
 ];

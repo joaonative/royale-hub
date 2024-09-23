@@ -24,7 +24,41 @@ export interface Player {
     name: string;
     badgeId: number;
   };
+  trophies?: number;
+  wins?: number;
+  losses?: number;
+  battleCount?: number;
+  arena?: {
+    id: number;
+    name: string;
+  };
+  badges?: {
+    name: string;
+    level: number;
+    maxLevel: number;
+    progress: number;
+    target: number;
+    iconUrls: {
+      large: string;
+    };
+  }[];
+  currentFavouriteCard?: Card;
+  currentDeck?: Card[];
+  starPoints?: number;
+  expPoints?: number;
+  currentPathOfLegendSeasonResult?: {
+    leagueNuber: 10;
+    trophies: number;
+    rank: 16;
+  };
 }
+
+export interface UpcomingChests {
+  index: number;
+  name: string;
+}
+
+export type UpcomingChestsResponse = Response<UpcomingChests>;
 
 export interface Clan {
   tag: string;

@@ -1,0 +1,109 @@
+@if (loading) {
+<app-loading></app-loading>
+} @else {
+<section class="overflow-x-clip">
+  <div
+    class="flex flex-row lg:w-max lg:!p-4 items-center md:justify-center gap-4"
+  >
+    <span
+      class="p-6 text-2xl text-white text-stroke bg-center bg-exp bg-contain bg-no-repeat"
+    >
+      {{ player?.expLevel }}
+    </span>
+    <div class="space-y-2 text-start">
+      <h1>{{ player?.name }}</h1>
+      <h2>{{ player?.tag }}</h2>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+    <span class="card flex justify-center">
+      @if(player?.clan) {
+      <a routerLink="/clans/{{ player?.clan?.tag }}" class="flex items-center">
+        <img
+          src="https://royaleapi.github.io/cr-api-assets/badges/{{
+            badgeName
+          }}.png"
+          alt="{{ badgeName }} badge icon"
+          class="w-8 h-8 object-contain"
+        />
+        <p class="pl-1">{{ player?.clan?.name }}</p>
+      </a>
+      } @else {
+      <img
+        src="https://royaleapi.github.io/cr-api-assets/badges/no_clan.png"
+        alt="no clan badge icon"
+        class="w-8 h-8 object-contain"
+      />
+      <p class="pl-1">No Clan</p>
+      }
+    </span>
+    <span class="card flex justify-center">
+      <i-lucide [img]="TrophyIcon" name="score" class="icon"></i-lucide>
+      {{ player?.trophies }}
+    </span>
+    <span class="card flex justify-center">
+      <i-lucide [img]="SwordsIcon" name="battle-count" class="icon"></i-lucide>
+      {{ player?.battleCount }}
+    </span>
+    <span class="card flex justify-center">
+      <i-lucide
+        [img]="ArrowUpDownIcon"
+        name="wins/losses"
+        class="icon"
+      ></i-lucide>
+      {{ player?.wins }}/{{ player?.losses }}
+    </span>
+  </div>
+</section>
+<section>
+  <h2>Current Deck</h2>
+  <div class="grid grid-cols-4 xl:grid-cols-8 gap-4">
+    @for(card of player?.currentDeck; track card.id) {
+    <img
+      src="{{ card.iconUrls.medium }}"
+      alt="{{ card.name }} image"
+      class="object-cover w-32 lg:w-48 xl:w-52 h-32 lg:h-48 xl:h-52"
+    />
+    }
+  </div>
+</section>
+<section>
+  <h2>Upcoming Chests</h2>
+  <div class="grid grid-cols-2 xl:grid-cols-5 gap-4">
+    @for (chest of upcomingChests; track chest.index ) {
+    <div class="card flex flex-col items-center gap-2">
+      <img
+        src="https://royaleapi.github.io/cr-api-assets/chests/{{
+          formatChestName(chest.name)
+        }}.png"
+        class="w-32 h-32 object-cover"
+        alt="chest {{ chest.name }} image"
+      />
+      <p>+{{ chest.index + 1 }} Wins</p>
+    </div>
+    }
+  </div>
+</section>
+<section>
+  <h2>Battle Log</h2>
+</section>
+<section>
+  <details>
+    <summary>Owned Badges</summary>
+    <div
+      class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2"
+    >
+      @for (badge of player?.badges; track badge.name ) {
+      <abbr title="{{ formatBadgeName(badge.name) }}">
+        <img
+          src="{{ badge.iconUrls.large }}"
+          alt="image of {{ badge.name }} badge"
+          class="w-24 h-24 lg:h-32 lg:w-32 xl:h-44 xl:w-4h-44 object-cover"
+          onerror="this.parentNode.removeChild(this);"
+        />
+      </abbr>
+      }
+    </div>
+  </details>
+</section>
+}
