@@ -17,25 +17,19 @@
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
     <span class="card flex justify-center">
-      @if(player?.clan) {
-      <a routerLink="/clans/{{ player?.clan?.tag }}" class="flex items-center">
+      <a
+        [routerLink]="player?.clan ? '/clans/' + player?.clan?.tag : '/clans'"
+        class="flex items-center gap-1"
+      >
         <img
           src="https://royaleapi.github.io/cr-api-assets/badges/{{
-            badgeName
+            getBadgeName(player?.clan?.badgeId)
           }}.png"
-          alt="{{ badgeName }} badge icon"
+          alt="{{ getBadgeName(player?.clan?.badgeId) }} badge image"
           class="w-8 h-8 object-contain"
         />
-        <p class="pl-1">{{ player?.clan?.name }}</p>
+        <p class="pl-1">{{ player?.clan?.name || "No clan" }}</p>
       </a>
-      } @else {
-      <img
-        src="https://royaleapi.github.io/cr-api-assets/badges/no_clan.png"
-        alt="no clan badge icon"
-        class="w-8 h-8 object-contain"
-      />
-      <p class="pl-1">No Clan</p>
-      }
     </span>
     <span class="card flex justify-center">
       <i-lucide [img]="TrophyIcon" name="score" class="icon"></i-lucide>
@@ -85,7 +79,124 @@
   </div>
 </section>
 <section>
-  <h2>Battle Log</h2>
+  <h2>Battle Logs</h2>
+  @for(battle of battleLogs; track battle.battleTime) {
+  <div class="card flex flex-col gap-4">
+    <div class="flex flex-col items-center justify-center gap-4">
+      @if(battle.team[0].crowns > battle.opponent[0].crowns) {
+      <p class="text-green">Battle Win</p>
+      } @else {
+      <p class="text-red">Battle Loss</p>
+      }
+      <div class="flex items-center gap-2 lg:gap-4">
+        <img
+          src="/assets/imgs/crown-blue.webp"
+          class="w-8 h-6 lg:w-14 lg:h-12 object-cover"
+          alt="blue crown image"
+        />
+        <p>{{ battle.team[0].crowns }} - {{ battle.opponent[0].crowns }}</p>
+        <img
+          src="/assets/imgs/crown-red.webp"
+          class="w-8 h-6 lg:w-14 lg:h-12 object-cover"
+          alt="red crown image"
+        />
+      </div>
+    </div>
+    <div
+      class="flex lg:items-center flex-col gap-6 lg:flex-row lg:justify-between"
+    >
+      @for(teamPlayer of battle.team; track teamPlayer.tag) {
+      <div class="flex flex-col gap-2 items-center md:items-start">
+        <a routerLink="/players/{{ teamPlayer.tag }}">
+          {{ teamPlayer.name }}
+        </a>
+        <a
+          [routerLink]="player?.clan ? '/clans/' + player?.clan?.tag : '/clans'"
+          class="flex items-center"
+        >
+          <img
+            src="https://royaleapi.github.io/cr-api-assets/badges/{{
+              getBadgeName(player?.clan?.badgeId)
+            }}.png"
+            alt="{{ getBadgeName(player?.clan?.badgeId) }} badge image"
+            class="w-8 h-8 object-contain"
+          />
+          <p class="pl-1">{{ player?.clan?.name || "No clan" }}</p>
+        </a>
+        <p>
+          #{{ teamPlayer.globalRank }}
+          {{
+            teamPlayer.trophyChange > 0
+              ? "+" + teamPlayer.trophyChange
+              : teamPlayer.trophyChange
+          }}
+        </p>
+        <span class="flex justify-center">
+          <i-lucide
+            [img]="DropletIcon"
+            name="leaked-elixir"
+            class="icon-purple"
+          ></i-lucide>
+          Leaked: {{ teamPlayer.elixirLeaked }}
+        </span>
+        <div class="grid grid-cols-4 justify-between w-full">
+          @for (card of teamPlayer.cards; track card.id) {
+          <img
+            src="{{ card.iconUrls.medium }}"
+            alt="{{ card.name }} image"
+            class="object-contain w-32 h-32 lg:w-44 lg:h-44 xl:w-52 xl:h-52"
+          />
+          }
+        </div>
+      </div>
+      } @for(opponent of battle.opponent; track opponent.tag) {
+      <div class="flex flex-col gap-2 items-center md:items-start lg:items-end">
+        <a routerLink="/players/{{ opponent.tag }}">{{ opponent.name }}</a>
+        <a
+          [routerLink]="
+            opponent.clan ? '/clans/' + opponent.clan.tag : '/clans'
+          "
+          class="flex items-center"
+        >
+          <img
+            src="https://royaleapi.github.io/cr-api-assets/badges/{{
+              getBadgeName(opponent.clan?.badgeId)
+            }}.png"
+            alt="{{ getBadgeName(opponent.clan?.badgeId) }} badge image"
+            class="w-8 h-8 object-contain"
+          />
+          <p class="pl-1">{{ opponent.clan?.name || "No clan" }}</p>
+        </a>
+        <p>
+          #{{ opponent.globalRank }}
+          {{
+            opponent.trophyChange > 0
+              ? "+" + opponent.trophyChange
+              : opponent.trophyChange
+          }}
+        </p>
+        <span class="flex justify-center">
+          <i-lucide
+            [img]="DropletIcon"
+            name="leaked-elixir"
+            class="icon-purple"
+          ></i-lucide>
+          Leaked: {{ opponent.elixirLeaked }}
+        </span>
+        <div class="grid grid-cols-4 justify-between w-full">
+          @for (card of opponent.cards; track card.id) {
+          <img
+            src="{{ card.iconUrls.medium }}"
+            alt="{{ card.name }} image"
+            class="object-contain w-32 h-32 lg:w-44 lg:h-44 xl:w-52 xl:h-52"
+          />
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
 </section>
 <section>
   <details>
