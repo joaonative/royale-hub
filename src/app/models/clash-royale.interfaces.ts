@@ -143,3 +143,56 @@ export interface FeaturedPlayerResponse {
   japan: PlayerResponse;
   china: PlayerResponse;
 }
+
+export interface BattleLog {
+  type: string;
+  battleTime: string;
+  isLadderTournament: false;
+  arena: {
+    id: number;
+    name: string;
+  };
+  gameMode: {
+    id: number;
+    name: string;
+  };
+  deckSelection: string;
+  team: {
+    tag: string;
+    name: string;
+    startingTrophies: number;
+    trophyChange: number;
+    crowns: number;
+    kingTowerHitPoints: number;
+    princessTowersHitPoints: number[];
+    cards: Card[];
+    supportCards: Card[];
+    globalRank: number;
+    elixirLeaked: number;
+    clan?: {
+      tag: string;
+      name: string;
+      badgeId: number;
+    };
+  }[];
+  opponent: {
+    tag: string;
+    name: string;
+    startingTrophies: number;
+    trophyChange: number;
+    crowns: number;
+    kingTowerHitPoints: number;
+    princessTowersHitPoints: number[];
+    cards: Card[];
+    supportCards: Card[];
+    globalRank: number;
+    elixirLeaked: number;
+    clan?: {
+      tag: string;
+      name: string;
+      badgeId: number;
+    };
+  }[];
+  isHostedMatch: boolean;
+  leagueNumber: number;
+}

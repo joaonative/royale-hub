@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
+  BattleLog,
   CardsResponse,
   ClanDetails,
   ClanResponse,
@@ -10,7 +11,6 @@ import {
   LocationResponse,
   Player,
   SearchClan,
-  SearchPlayer,
   UpcomingChestsResponse,
 } from '../models/clash-royale.interfaces';
 
@@ -56,6 +56,12 @@ export class ClashRoyaleService {
   getUpcomingChests(playerTag: string): Observable<UpcomingChestsResponse> {
     return this.http.get<UpcomingChestsResponse>(
       `/players/chests/${encodeURIComponent(playerTag)}`
+    );
+  }
+
+  getBattleLog(playerTag: string): Observable<BattleLog[]> {
+    return this.http.get<BattleLog[]>(
+      `/players/battlelog/${encodeURIComponent(playerTag)}`
     );
   }
 
