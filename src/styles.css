@@ -49,6 +49,10 @@ label {
 .icon {
   @apply stroke-blue stroke-[3px];
 }
+
+.icon-purple {
+  @apply stroke-purple fill-purple stroke-[3px];
+}
 .green {
   @apply border-greenDark bg-green;
 }
