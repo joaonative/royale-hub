@@ -1,27 +1,43 @@
 # RoyaleHub
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+## Descrição do Projeto
 
-## Development server
+RoyaleHub é um web app desenvolvido com **Angular 17** que se comunica com a API do **Clash Royale**. O objetivo é criar uma plataforma que exibe informações sobre três entidades principais do jogo: **cartas**, **clãs** e **jogadores**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Funcionalidades
 
-## Code scaffolding
+### Página de Cartas
+- Visualização de todas as cartas disponíveis.
+- Detalhes como nome, raridade e custo.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Página de Clãs
+- Busca e filtragem de clãs.
+- Exibição dos três melhores clãs em diferentes regiões (EUA, Brasil, China).
+- Páginas dinâmicas com informações detalhadas de cada clã:
+  - Descrição
+  - Score
+  - Doações
+  - Lista de membros
+  - Tipo de clã
 
-## Build
+### Página de Jogadores
+- Busca por tag de jogador.
+- Listagem dos três melhores jogadores.
+- Páginas dinâmicas com informações como:
+  - Nome
+  - Tag
+  - Deck atual
+  - Quantidade de partidas jogadas
+  - Relação vitória/derrota
+  - Clã em que participa
+  - Próximos baús
+  - Registro de batalhas, incluindo detalhes de cada partida jogada, como:
+    - Deck utilizado
+    - Adversário
+    - Vencedor
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Design
+- Implementado com **Tailwind CSS**.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Feedback
+Estou aberto a feedbacks e sugestões!
